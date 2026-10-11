@@ -1,0 +1,10 @@
+# 季度股池数据侧
+#   data/raw  三大报表原始抓取结果，由 scripts/update_latest.py 重建
+#   data/*.json 中 pools.json 除外：股池成员名单重建代价高，随代码入库
+data/*
+!data/pools.json
+__pycache__/
+*.py[cod]
+*.log
+.DS_Store
+.workbuddy/
