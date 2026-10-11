@@ -4,7 +4,8 @@ import sys, os, json
 import pandas as pd
 
 sys.stdout.reconfigure(encoding='utf-8', errors='replace')
-BASE = r"C:\Users\12066\WorkBuddy\2026-10-04-19-37-33"
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from paths import BASE  # noqa: E402  路径：本机 Windows 与云端 Linux 通用
 
 TOPN = 5
 

@@ -31,11 +31,9 @@ import time
 
 sys.stdout.reconfigure(encoding='utf-8', errors='replace')
 
-BASE = r"C:\Users\12066\WorkBuddy\2026-10-04-19-37-33"
-PY = r"C:\Users\12066\.workbuddy\binaries\python\envs\default\Scripts\python.exe"
-EXE = r"C:\Users\12066\.local\bin\westock.exe"
-SKILL = (r"C:\Users\12066\.workbuddy\plugins\cache\workbuddy-builtin\skill-library"
-         r"\5.7.3-wb.40038958.gaa9f13d9.hff9adc917099")
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from paths import BASE, PY, WESTOCK as EXE, library_skill  # noqa: E402  路径：本机 Windows 与云端 Linux 通用
+
 RAW = os.path.join(BASE, "data", "raw")
 PAGE_NODE = "iB8I58mCTooLicPQ0Kyq0M"          # 资料库页面节点（覆写目标）
 SPACE_ID = "EZaiULPjRP7ghX3LGRl1HO"
@@ -204,6 +202,7 @@ def main():
     run("gen_page.py")
 
     if not a.no_import:
+        SKILL = str(library_skill())   # 延迟解析：无资料库 skill 时不影响前面的数据流程
         cmd = [PY, os.path.join(SKILL, "page", "import_html.py"),
                os.path.join(BASE, "data", "pool_page.html"),
                "--file-name", "舞弊调整质量因子·季度动态股池.html",

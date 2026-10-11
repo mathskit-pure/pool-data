@@ -4,7 +4,8 @@ import sys, os, json, html
 import pandas as pd
 
 sys.stdout.reconfigure(encoding='utf-8', errors='replace')
-BASE = r"C:\Users\12066\WorkBuddy\2026-10-04-19-37-33"
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from paths import BASE  # noqa: E402  路径：本机 Windows 与云端 Linux 通用
 OUT = os.path.join(BASE, "data", "pool_page.html")
 
 # 页面按报告期升序展示；若数据中出现更新的报告期会自动排在最前
